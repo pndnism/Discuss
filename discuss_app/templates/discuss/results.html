@@ -1,0 +1,8 @@
+<h1>{{ discuss_theme.title }}</h1>
+
+<ul>
+    <li>{{ discuss_theme.one_side }} -- {{ discuss_theme.one_side_count }} 人</li>
+    <li>{{ discuss_theme.another_side }} -- {{ discuss_theme.another_side_count }} 人</li>
+</ul>
+
+<a href="{% url 'discuss:detail' discuss_theme.id %}">募集画面に戻る</a>
