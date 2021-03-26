@@ -36,8 +36,8 @@ def entry(request, discuss_theme_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return HttpResponseRedirect(reverse('discuss:results', args=(discuss_theme.id,)))
+        return HttpResponseRedirect(reverse('discuss:waiting', args=(discuss_theme.id,)))
 
-def results(request, discuss_theme_id):
+def waiting(request, discuss_theme_id):
     discuss_theme = get_object_or_404(DiscussTheme, pk=discuss_theme_id)
-    return render(request, 'discuss/results.html', {'discuss_theme': discuss_theme})
+    return render(request, 'discuss/waiting.html', {'discuss_theme': discuss_theme})
