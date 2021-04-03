@@ -19,7 +19,7 @@ def detail(request, discuss_theme_id):
 def entry(request, discuss_theme_id):
     discuss_theme = get_object_or_404(DiscussTheme, pk=discuss_theme_id)
     try:
-        selected_side = request.POST['side-choice']
+        selected_side = discuss_theme.discussside_set.get(pk=request.POST['side-choice'])
     except (KeyError):
         # Redisplay the question voting form.
         return render(request, 'discuss/detail.html', {
@@ -27,12 +27,8 @@ def entry(request, discuss_theme_id):
             'error_message': "You didn't select a side.",
         })
     else:
-        if selected_side == discuss_theme.one_side:
-            discuss_theme.one_side_count += 1
-        if selected_side == discuss_theme.another_side:
-            discuss_theme.another_side_count += 1
-        
-        discuss_theme.save()
+        selected_side.side_count += 1
+        selected_side.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
