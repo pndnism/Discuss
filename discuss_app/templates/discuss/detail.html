@@ -4,6 +4,7 @@
 
 <form action="{% url 'discuss:entry' discuss_theme.id %}" method="post">
 {% csrf_token %}
+<textarea class="form-control" name="user-name"></textarea><br>
 {% for discuss_side in discuss_theme.discussside_set.all %}
     <input type="radio" name="side-choice" id="side-choice-{{ forloop.counter }}" value="{{ discuss_side.id }}">
     <label for="side-choice-{{ forloop.counter }}">{{ discuss_side.side_claim }}</label><br>
