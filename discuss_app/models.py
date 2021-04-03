@@ -39,7 +39,7 @@ class DiscussTheme(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.create_date <= now
 
-class DiscussSides(models.Model):
+class DiscussSide(models.Model):
     discuss_theme =  models.ForeignKey(DiscussTheme, on_delete=models.CASCADE)
     max_n_of_member = models.IntegerField(default=5)
     one_side = models.CharField(max_length=25)
