@@ -25,11 +25,6 @@ class DiscussTheme(models.Model):
             return cls[member].value[0]
 
     title = models.CharField(max_length=50)
-    max_n_of_member = models.IntegerField(default=5)
-    one_side = models.CharField(max_length=25)
-    one_side_count = models.IntegerField(default=0)
-    another_side = models.CharField(max_length=25)
-    another_side_count = models.IntegerField(default=0)
     genre = models.ForeignKey(ThemeGenre, on_delete=models.CASCADE)
     status = models.CharField(
                         max_length=1,
@@ -43,6 +38,17 @@ class DiscussTheme(models.Model):
     def was_published_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.create_date <= now
+
+class DiscussSide(models.Model):
+    discuss_theme =  models.ForeignKey(DiscussTheme, on_delete=models.CASCADE)
+    max_n_of_member = models.IntegerField(default=5)
+    side_claim = models.CharField(max_length=25)
+    side_count = models.IntegerField(default=0)
+    create_date = models.DateTimeField('date published')
+
+    def __str__(self):
+        return str(self.discuss_theme) + "_" + str(self.side_claim)
+    
 
 
 

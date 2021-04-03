@@ -4,11 +4,11 @@
 
 <form action="{% url 'discuss:entry' discuss_theme.id %}" method="post">
 {% csrf_token %}
-    <input type="radio" name="side-choice" id="side-choice-1" value="{{ discuss_theme.one_side }}">
-    <label for="side-choice-1">{{ discuss_theme.one_side }}</label><br>
-    <input type="radio" name="side-choice" id="side-choice-2" value="{{ discuss_theme.another_side }}">
-    <label for="side-choice-2">{{ discuss_theme.another_side }}</label><br>
+{% for discuss_side in discuss_theme.discussside_set.all %}
+    <input type="radio" name="side-choice" id="side-choice-{{ forloop.counter }}" value="{{ discuss_side.id }}">
+    <label for="side-choice-{{ forloop.counter }}">{{ discuss_side.side_claim }}</label><br>
     <br>
+{% endfor %}
 <input type="submit" value="Entry">
 </form>
 <a href="{% url 'discuss:index' %}">Home</a>

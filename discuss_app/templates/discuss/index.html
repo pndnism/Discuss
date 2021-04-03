@@ -11,8 +11,10 @@
                 <h5 class="card-title">{{ discuss_theme.title }}</h5>
                 <br>
                 <h6 class="card-subtitle">募集人数：<br>
-                    {{ discuss_theme.one_side }} {{ discuss_theme.max_n_of_member }} 人
-                    {{ discuss_theme.another_side }} {{ discuss_theme.max_n_of_member }} 人</h6>
+                    {% for discuss_side in discuss_theme.discussside_set.all %}
+                    {{ discuss_side.side_claim}} {{ discuss_side.max_n_of_member }} 人 
+                    {% endfor %}
+                </h6>
                 <br>
                 <a href="{% url 'discuss:detail' discuss_theme.id %}" class="btn btn-primary">募集詳細</a>
             </div>
