@@ -42,11 +42,12 @@ class DiscussTheme(models.Model):
 class DiscussSide(models.Model):
     discuss_theme =  models.ForeignKey(DiscussTheme, on_delete=models.CASCADE)
     max_n_of_member = models.IntegerField(default=5)
-    one_side = models.CharField(max_length=25)
-    one_side_count = models.IntegerField(default=0)
-    another_side = models.CharField(max_length=25)
-    another_side_count = models.IntegerField(default=0)
+    side_claim = models.CharField(max_length=25)
+    side_count = models.IntegerField(default=0)
     create_date = models.DateTimeField('date published')
+
+    def __str__(self):
+        return str(self.discuss_theme) + "_" + str(self.side_claim)
     
 
 
