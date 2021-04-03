@@ -7,4 +7,5 @@ urlpatterns = [
     path('<int:discuss_theme_id>/', views.detail, name='detail'),
     path('<int:discuss_theme_id>/entry/', views.entry, name='entry'),
     path('<int:discuss_theme_id>/waiting/', views.waiting, name='waiting'),
+    path('<int:discuss_theme_id>/discussion/', views.discussion, name='discussion'),
 ]
