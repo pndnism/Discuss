@@ -48,6 +48,20 @@ class DiscussSide(models.Model):
 
     def __str__(self):
         return str(self.discuss_theme) + "_" + str(self.side_claim)
+
+class User(models.Model):
+    name = models.CharField(max_length=25)
+
+    def __str__(self):
+            return str(self.discuss_theme) + "_" + str(self.side_claim)
+
+class DiscussionComment(models.Model):
+    discuss_side = models.ForeignKey(DiscussSide, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.CharField(verbose_name="コメント",max_length=2000)
+
+    def __str__(self):
+        return self.comment
     
 
 
