@@ -37,3 +37,7 @@ def entry(request, discuss_theme_id):
 def waiting(request, discuss_theme_id):
     discuss_theme = get_object_or_404(DiscussTheme, pk=discuss_theme_id)
     return render(request, 'discuss/waiting.html', {'discuss_theme': discuss_theme})
+
+def discussion(request, discuss_theme_id):
+    discuss_theme = get_object_or_404(DiscussTheme, pk=discuss_theme_id)
+    return render(request, 'discuss/discussion.html', {'discuss_theme': discuss_theme})
