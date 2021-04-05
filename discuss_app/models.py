@@ -51,9 +51,9 @@ class DiscussSide(models.Model):
 
 class User(models.Model):
     name = models.CharField(max_length=25)
-
+    create_date = models.DateTimeField('date published')
     def __str__(self):
-            return str(self.discuss_theme) + "_" + str(self.side_claim)
+            return self.name
 
 class DiscussionComment(models.Model):
     discuss_side = models.ForeignKey(DiscussSide, on_delete=models.CASCADE)
