@@ -3,12 +3,14 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <form action="{% url 'discuss:entry' discuss_theme.id %}" method="post">
-{% csrf_token %}
+{% csrf_token %}	
 {% for discuss_side in discuss_theme.discussside_set.all %}
     <input type="radio" name="side-choice" id="side-choice-{{ forloop.counter }}" value="{{ discuss_side.id }}">
     <label for="side-choice-{{ forloop.counter }}">{{ discuss_side.side_claim }}</label><br>
     <br>
 {% endfor %}
+<p>参加ユーザー名を入力</p>
+<input type="text" name="user_name" size="30" maxlength="30" ><br><br>
 <input type="submit" value="Entry">
 </form>
 <a href="{% url 'discuss:index' %}">Home</a>

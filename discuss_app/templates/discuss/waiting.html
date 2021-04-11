@@ -6,4 +6,7 @@
     {% endfor %}
 </ul>
 
+{{request.session.user_name}}<br>
+
 <a href="{% url 'discuss:detail' discuss_theme.id %}">募集画面に戻る</a>
+
