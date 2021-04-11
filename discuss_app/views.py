@@ -20,11 +20,13 @@ def entry(request, discuss_theme_id):
     discuss_theme = get_object_or_404(DiscussTheme, pk=discuss_theme_id)
     try:
         selected_side = discuss_theme.discussside_set.get(pk=request.POST['side-choice'])
+        user_name = request.POST['user_name']
+        request.session['user_name'] = user_name    
     except (KeyError):
         # Redisplay the question voting form.
         return render(request, 'discuss/detail.html', {
             'discuss_theme': discuss_theme,
-            'error_message': "You didn't select a side.",
+            'error_message': "You didn't select a side or enter your name.",
         })
     else:
         selected_side.side_count += 1
