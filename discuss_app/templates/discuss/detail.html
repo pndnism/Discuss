@@ -9,6 +9,12 @@
     <label for="side-choice-{{ forloop.counter }}">{{ discuss_side.side_claim }}</label><br>
     <br>
 {% endfor %}
+
+<form action="{% url 'discuss:entry' discuss_theme.id %}" method="post">
+<input type="radio" name="judgeman" value="判定員">
+<label>{{ "判定員" }}</label><br>
+<br>
+
 <input type="submit" value="Entry">
 </form>
 <a href="{% url 'discuss:index' %}">Home</a>

@@ -4,6 +4,7 @@
     {% for discuss_side in discuss_theme.discussside_set.all %}
     <li>{{ discuss_side.side_claim }} -- {{ discuss_side.side_count }} 人</li>
     {% endfor %}
+    <li>{{ 判定員 }} -- {{ judge_side.side_count }} 人</li>
 </ul>
 
 <a href="{% url 'discuss:detail' discuss_theme.id %}">募集画面に戻る</a>

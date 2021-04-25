@@ -48,7 +48,13 @@ class DiscussSide(models.Model):
 
     def __str__(self):
         return str(self.discuss_theme) + "_" + str(self.side_claim)
-    
+
+class JudgeMan(models.Model):
+    discuss_theme  =  models.ForeignKey(DiscussTheme, on_delete=models.CASCADE)
+    username = models.CharField(max_length)
+    judge_side =  
+    create_date = models.DateTimeField('date published')
+
 
 
 
